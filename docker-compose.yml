@@ -1,0 +1,41 @@
+version: '3.6'
+
+services:
+  sbt:
+    container_name: sbt
+    image: shafiquejamal/scala-sbt:8u171_2.12.6_1.1.6
+    ports: 
+      - 3000:3000
+      - 9000:9000
+      - 3001:3001
+      - 9001:9001
+    volumes:
+      - type: bind
+        source: "${DEV_DIR}"
+        target: /home/
+
+    stdin_open: true
+    tty: true
+    working_dir: /home/
+    depends_on:
+      - db
+      - kafka-zookeeper
+    environment:
+      - PGPASSWORD=${API_GATEWAY_SCALIKEJDBC_DEFAULT_DB_PASSWORD}
+
+  db:
+    container_name: db
+    image: postgres:10.4-alpine
+    environment: 
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  kafka-zookeeper:
+    container_name: kafka-zookeeper
+    image: shafiquejamal/kakfa-zookeeper:3.4.12_1.1.0
+
+volumes:
+  db-data:
+
