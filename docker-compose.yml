@@ -21,7 +21,7 @@ services:
       - db
       - kafka-zookeeper
     environment:
-      - PGPASSWORD=${API_GATEWAY_SCALIKEJDBC_DEFAULT_DB_PASSWORD}
+      - PGPASSWORD=$API_GATEWAY_SCALIKEJDBC_DEFAULT_DB_PASSWORD
 
   db:
     container_name: db

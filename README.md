@@ -20,7 +20,7 @@ export API_GATEWAY_SCALIKEJDBC_TEST_DB_URL=jdbc:postgresql://db:5432/${API_GATEW
 export API_GATEWAY_SCALIKEJDBC_TEST_DB_USERNAME=postgres
 export API_GATEWAY_SCALIKEJDBC_TEST_DB_PASSWORD=postgres
 
-export API_GATEWAY_MESSAGE_BROKER_LOGS=/tmp/kafka-logs-docker/ # not used... yet.
+export API_GATEWAY_MESSAGE_BROKER_PRODUCER_TOPIC=some-topic
 ```
 
 - run the following command to start the containers, and enter the SBT container:
