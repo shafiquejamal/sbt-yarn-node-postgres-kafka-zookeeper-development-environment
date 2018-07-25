@@ -19,6 +19,11 @@ services:
       - type: volume
         source: sbt 
         target: /root/.sbt/
+      - type: volume
+        source: unmanaged-jars
+        target: "/root/unmanaged-jars/"
+        volume:
+          read_only: true
 
     stdin_open: true
     tty: true
@@ -46,4 +51,5 @@ volumes:
   db-data:
   ivy2:
   sbt:        
+  unmanaged-jars:
 
